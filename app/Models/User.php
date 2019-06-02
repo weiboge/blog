@@ -27,6 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->activation_token = str_random(30);
+        });
+    }
 
     /**
      * The attributes that should be cast to native types.
@@ -40,5 +48,9 @@ class User extends Authenticatable
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://www.gravatar.com/avatar/$hash?s=$size";
+    }
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
     }
 }
