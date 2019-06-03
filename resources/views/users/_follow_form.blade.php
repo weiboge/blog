@@ -1,4 +1,4 @@
-//关注表单
+{{--关注表单--}}
 
 @can('follow', $user)
   <div class="text-center mt-2 mb-4">

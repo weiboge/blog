@@ -4,6 +4,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Fontawesome 矢量字体图标库
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
 /* universal */
 
 body {
@@ -117,4 +123,12 @@ section.user_info {
     font-size: 1.2em;
     color: black;
   }
+}
+
+/* User register page */
+img.captcha {
+  cursor: pointer;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 3px;
 }

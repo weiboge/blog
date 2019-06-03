@@ -1,4 +1,4 @@
-//用户个人页面
+{{--用户个人页面--}}
 
 @extends('layouts.app')
 @section('title', $user->name)

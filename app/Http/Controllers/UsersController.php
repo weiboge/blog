@@ -25,9 +25,25 @@ class UsersController extends Controller
             'only' => ['create']
         ]);
     }
+//    protected function validator(array $data)
+//    {
+//        return Validator::make($data, [
+//            'name' => 'required|string|max:255',
+//            'email' => 'required|string|email|max:255|unique:users',
+//            'password' => 'required|string|min:6|confirmed',
+//            'captcha' => 'required|captcha',
+//        ], [
+//            'captcha.required' => '验证码不能为空',
+//            'captcha.captcha' => '请输入正确的验证码',
+//        ]);
+//    }
     public function create()
     {
         return view('users.create');
+    }
+    public function information(User $user)
+    {
+        return view('users.information',compact('user'));
     }
     public function show(User $user)
     {
@@ -44,8 +60,14 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+             'captcha' => 'required|captcha',
+        ], [
+        'captcha.required' => '验证码不能为空',
+        'captcha.captcha' => '请输入正确的验证码',
         ]);
+
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
