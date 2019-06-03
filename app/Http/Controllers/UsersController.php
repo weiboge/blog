@@ -73,6 +73,7 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+
         ]);
         $this->sendEmailConfirmationTo($user);
         session()->flash('success', '验证邮件已发送到你的注册邮箱上，请注意查收。');
@@ -92,7 +93,9 @@ class UsersController extends Controller
             'name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6',
             'introduction' => 'required|min:3|max:80',
-        ]);
+            'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208',
+        ],['avatar.mimes' =>'头像必须是 jpeg, bmp, png, gif 格式的图片',
+            'avatar.dimensions' => '图片的清晰度不够，宽和高需要 208px 以上',]);
         $data = [];
         $data['name'] = $request->name;
         $data['introduction'] = $request->introduction;
