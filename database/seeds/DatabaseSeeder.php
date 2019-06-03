@@ -1,5 +1,7 @@
 <?php
 
+//指定调用微博数据填充文件
+
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 

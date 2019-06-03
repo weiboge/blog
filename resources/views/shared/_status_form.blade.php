@@ -1,3 +1,6 @@
+{{--微博发布表单--}}
+
+
 <form action="{{ route('statuses.store') }}" method="POST">
   @include('shared._errors')
   {{ csrf_field() }}

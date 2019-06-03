@@ -1,3 +1,5 @@
+//显示用户关系的视图
+
 @extends('layouts.app')
 @section('title', $title)
 

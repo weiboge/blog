@@ -1,3 +1,5 @@
+{{--社交信息统计--}}
+
 <a href="{{ route('users.followings', $user->id) }}">
   <strong id="following" class="stat">
     {{ count($user->followings) }}

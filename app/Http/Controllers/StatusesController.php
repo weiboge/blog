@@ -8,6 +8,7 @@ use Auth;
 
 class StatusesController extends Controller
 {
+//    过滤登陆
     public function __construct()
     {
         $this->middleware('auth');

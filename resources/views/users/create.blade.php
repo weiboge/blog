@@ -1,3 +1,5 @@
+{{--用户的注册表单--}}
+
 @extends('layouts.app')
 @section('title', '注册')
 

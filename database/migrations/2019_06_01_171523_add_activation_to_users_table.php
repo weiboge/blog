@@ -1,5 +1,7 @@
 <?php
 
+//激活令牌 (activation_token) 和激活状态 (activated) 字段新增一个迁移
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

@@ -1,3 +1,5 @@
+//关注表单
+
 @can('follow', $user)
   <div class="text-center mt-2 mb-4">
     @if (Auth::user()->isFollowing($user->id))

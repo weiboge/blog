@@ -1,3 +1,5 @@
+{{--更新密码视图--}}
+
 @extends('layouts.app')
 @section('title', '更新密码')
 

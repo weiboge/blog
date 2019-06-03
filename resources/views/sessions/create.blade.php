@@ -1,3 +1,5 @@
+{{--登录视图--}}
+
 @extends('layouts.app')
 @section('title', '登录')
 

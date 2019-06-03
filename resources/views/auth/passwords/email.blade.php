@@ -1,3 +1,5 @@
+{{--重置密码表单--}}
+
 @extends('layouts.app')
 @section('title', '重置密码')
 
