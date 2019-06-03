@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Mail;
 use Auth;
+use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
@@ -83,23 +84,40 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
 //update 方法接收两个参数，第一个为自动解析用户 id 对应的用户实例对象，第二个则为更新用户表单的输入数据
-    public function update(User $user, Request $request)
+    public function update(User $user, Request $request,ImageUploadHandler $uploader)
     {
+//        dd($request->avatar);  打印图片信息
         $this->authorize('update', $user);
         $this->validate($request, [
             'name' => 'required|max:50',
-            'password' => 'nullable|confirmed|min:6'
+            'password' => 'nullable|confirmed|min:6',
+            'introduction' => 'required|min:3|max:80',
         ]);
         $data = [];
         $data['name'] = $request->name;
+        $data['introduction'] = $request->introduction;
+        $data['avatar'] = $request->avatar;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
+        }
+        if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', $user->id);
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
         }
         $user->update($data);
         session()->flash('success', '个人资料更新成功！');
 
-        return redirect()->route('users.show', $user->id);
+        return redirect()->route('users.information', $user->id);
     }
+
+//    public function update(UserRequest $request, User $user)
+//    {
+//        $user->update($request->all());
+//        return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
+//    }
+
     public function index()
     {
 //        使用 Eloquent 用户模型将所有用户的数据一下子完全取出来了，这么做会影响应用的性能
