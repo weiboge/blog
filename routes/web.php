@@ -73,3 +73,5 @@ Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('f
 //Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 //Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 //Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
