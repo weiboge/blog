@@ -111,4 +111,11 @@ class User extends Authenticatable
         return $this->belongsToMany(User::Class, 'followers', 'follower_id', 'user_id');
     }
 
+//    用户有很多话题
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
+
 }

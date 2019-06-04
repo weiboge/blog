@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bpp')
 @section('title', '技术交流论坛')
 
 @section('content')

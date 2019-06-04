@@ -3,7 +3,7 @@
 //静态页面
 Route::get('/', 'PagesController@root')->name('root');
 Route::get('/weibo', 'PagesController@weibo')->name('weibo');
-Route::get('/bbs', 'PagesController@root')->name('bbs');
+Route::get('/bbs', 'PagesController@bbs')->name('bbs');
 
 Route::get('/about', 'PagesController@about')->name('about');
 
@@ -75,3 +75,6 @@ Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('f
 //Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+//分类显示
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
